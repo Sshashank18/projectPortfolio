@@ -53,6 +53,7 @@ const projectSchema = new mongoose.Schema({
 
 const Project = mongoose.model('Project', projectSchema);
 
+app.set('trust proxy', 1); // trust Railway reverse proxy
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'Portfolio',
