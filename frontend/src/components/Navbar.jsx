@@ -90,7 +90,7 @@ const Navbar = () => {
                 '&:hover': { cursor: 'pointer' },
               }}
             >
-              About
+              About Me
             </Button>)}
         </Box>
 

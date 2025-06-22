@@ -1,0 +1,53 @@
+# 🚀 Personal Portfolio & Project Showcase
+
+Welcome to my **Personal Portfolio** and **Projects Showcase** web application!  
+This platform highlights my personal software development projects, along with links to live demos, GitHub repositories, and more. You can also find an authentication-protected admin section for managing content.
+
+---
+
+## 📌 Features
+
+- 🧑‍💻 **Admin Login**: Secure login for managing project content (Add/Edit/Delete).
+- 🗂 **Projects Listing**: Display of personal and academic projects with rich metadata.
+- 🌐 **Portfolio Integration**: Link to detailed personal website via the **About Me** section.
+- ☁️ **Deployed on the cloud**:  
+  - **Frontend**: [Firebase Hosting](https://firebase.google.com/)  
+  - **Backend/API**: [Railway](https://railway.app/)
+
+---
+
+## 🧱 Tech Stack
+
+| Frontend         | Backend        | Auth & Middleware    | Deployment        |
+|------------------|----------------|-----------------------|-------------------|
+| React.js (Vite)  | Node.js + Express | Passport.js (Local Strategy) | Railway (Backend) |
+| Axios            | MongoDB Atlas   | express-session + cookie | Firebase (Frontend) |
+| React Router     | Mongoose        |                       |                   |
+| Material UI      |                 |                       |                   |
+
+---
+
+## 🧭 Project Structure
+
+portfolio/
+├── frontend/ # React frontend (hosted on Firebase)
+│ ├── src/
+│ ├── public/
+│ └── ...
+├── backend/ # Express backend (hosted on Railway)
+│ ├── model/
+│ ├── routes/
+│ ├── passport.js
+│ └── server.js
+├── .env # Environment variables for server
+└── README.md
+
+## Links
+
+https://projectportfolio-production-a923.up.railway.app/ (For Backend)
+
+https://projectportfolio-c4a04.web.app/(For Frontend)
+
+
+## ScreenShots
+
