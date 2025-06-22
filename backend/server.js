@@ -35,8 +35,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB Connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 // Mongoose Schema
 const projectSchema = new mongoose.Schema({
@@ -57,7 +57,11 @@ app.use(session({
   // secret: 'Portfolio',
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    secure: true,      // Required for cross-site cookie
+    sameSite: 'None'   // Allows cross-site usage from Firebase to Railway
+  }
 }));
 
 app.use(passport.initialize());
