@@ -13,7 +13,17 @@ const PORT = process.env.PORT || 5000;
 // Middlewares
 // app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://projectportfolio-c4a04.web.app'],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'https://projectportfolio-c4a04.web.app'
+    ];
+    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
@@ -54,6 +64,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./passport')(passport);
+
+
+app.get('/', (req, res) => {
+  res.send('Server is live!');
+});
 
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
