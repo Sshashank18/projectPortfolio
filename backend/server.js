@@ -11,11 +11,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+// app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: 'https://projectportfolio-c4a04.web.app/', credentials: true }));
 app.use(express.json());
 
 // MongoDB Atlas connection
-mongoose.connect('mongodb+srv://shashankaggarwal13:ZO3Ne1RoHbWd2Iyz@projectdetails.myl17ww.mongodb.net/', {
+// mongoose.connect('mongodb+srv://shashankaggarwal13:ZO3Ne1RoHbWd2Iyz@projectdetails.myl17ww.mongodb.net/', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -38,7 +40,8 @@ const Project = mongoose.model('Project', projectSchema);
 
 
 app.use(session({
-  secret: 'Portfolio',
+  // secret: 'Portfolio',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
