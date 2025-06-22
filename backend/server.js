@@ -49,7 +49,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('../functions/passport')(passport);
+require('./passport')(passport);
 
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
