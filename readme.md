@@ -29,18 +29,7 @@ This platform highlights my personal software development projects, along with l
 
 ## 🧭 Project Structure
 
-portfolio/
-├── frontend/ # React frontend (hosted on Firebase)
-│ ├── src/
-│ ├── public/
-│ └── ...
-├── backend/ # Express backend (hosted on Railway)
-│ ├── model/
-│ ├── routes/
-│ ├── passport.js
-│ └── server.js
-├── .env # Environment variables for server
-└── README.md
+<pre><code>```plaintext portfolio/ ├── frontend/ # React frontend (hosted on Firebase) │ ├── src/ │ ├── public/ │ └── ... ├── backend/ # Express backend (hosted on Railway) │ ├── model/ │ ├── routes/ │ ├── passport.js │ └── server.js ├── .env # Environment variables for server └── README.md ```</code></pre>
 
 ## Links
 
