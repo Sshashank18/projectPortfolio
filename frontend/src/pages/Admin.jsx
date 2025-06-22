@@ -32,7 +32,7 @@ const Admin = () => {
   // Fetch projects from MongoDB on load
   useEffect(() => {
     // fetch('http://localhost:5000/api/projects')
-    fetch('https://projectportfolio-production-a923.up.railway.app/api/projects')
+    fetch('https://projectportfolio-production-a923.up.railway.app/api/projects',{ withCredentials: true })
       .then(res => res.json())
       .then(data => setProjects(data))
       .catch(err => console.error('Error fetching projects:', err));
@@ -57,7 +57,7 @@ const Admin = () => {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(projectData)
-        });
+        },{ withCredentials: true });
       } else {
         // Create new project
         // response = await fetch('http://localhost:5000/api/projects', {
@@ -65,7 +65,7 @@ const Admin = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(projectData)
-        });
+        },{ withCredentials: true });
       }
 
       const savedProject = await response.json();
@@ -115,7 +115,7 @@ const Admin = () => {
       // await fetch(`http://localhost:5000/api/projects/${id}`, {
       await fetch(`https://projectportfolio-production-a923.up.railway.app/api/projects/${id}`, {
         method: 'DELETE'
-      });
+      },{ withCredentials: true });
       setProjects(projects.filter(p => p._id !== id));
     } catch (err) {
       console.error('Error deleting project:', err);

@@ -20,16 +20,20 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await axios.post('http://localhost:5000/login', form);
-      await axios.post('https://projectportfolio-production-a923.up.railway.app/login', form);
+      await axios.post(
+        'https://projectportfolio-production-a923.up.railway.app/login',
+        form,
+        { withCredentials: true } // ✅ Critical fix
+      );
 
       window.dispatchEvent(new Event('userUpdated'));
-
       navigate('/admin');
     } catch (err) {
-      alert('Login failed');
+      console.error(err?.response || err);
+      alert('Login failed. Please check your credentials or try again.');
     }
   };
+
   return (
     <Box
       sx={{

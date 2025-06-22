@@ -16,7 +16,8 @@ app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
       'http://localhost:5173',
-      'https://projectportfolio-c4a04.web.app'
+      'https://projectportfolio-c4a04.web.app',
+      'https://projectportfolio-c4a04.firebaseapp.com'
     ];
     if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
       callback(null, true);
@@ -59,8 +60,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,      // Required for cross-site cookie
-    sameSite: 'None'   // Allows cross-site usage from Firebase to Railway
+    secure: process.env.NODE_ENV === 'production', // true on Railway
+    // secure: false // for localhost
+    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
   }
 }));
 
@@ -99,6 +101,10 @@ app.get('/logout', (req, res) => {
 
 // Check Auth
 app.get('/me', (req, res) => {
+  console.log('Session on /me:', req.sessionID);
+  console.log('Authenticated:', req.isAuthenticated());
+  console.log('User:', req.user);
+  
   if (req.isAuthenticated()) {
     res.json({ user: req.user });
   } else {
