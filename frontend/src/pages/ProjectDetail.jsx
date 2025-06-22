@@ -52,7 +52,8 @@ function ProjectDetail() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/projects/${projectId}`);
+        // const res = await fetch(`http://localhost:5000/api/projects/${projectId}`);
+        const res = await fetch(`https://projectportfolio-production-a923.up.railway.app/api/projects/${projectId}`);
         const data = await res.json();
         setProject(data);
       } catch (err) {

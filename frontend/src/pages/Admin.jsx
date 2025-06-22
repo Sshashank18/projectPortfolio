@@ -31,7 +31,8 @@ const Admin = () => {
 
   // Fetch projects from MongoDB on load
   useEffect(() => {
-    fetch('http://localhost:5000/api/projects')
+    // fetch('http://localhost:5000/api/projects')
+    fetch('https://projectportfolio-production-a923.up.railway.app/api/projects')
       .then(res => res.json())
       .then(data => setProjects(data))
       .catch(err => console.error('Error fetching projects:', err));
@@ -51,14 +52,16 @@ const Admin = () => {
       let response;
       if (editingProject) {
         // Update existing project
-        response = await fetch(`http://localhost:5000/api/projects/${editingProject._id}`, {
+        // response = await fetch(`http://localhost:5000/api/projects/${editingProject._id}`, {
+        response = await fetch(`https://projectportfolio-production-a923.up.railway.app/api/projects/${editingProject._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(projectData)
         });
       } else {
         // Create new project
-        response = await fetch('http://localhost:5000/api/projects', {
+        // response = await fetch('http://localhost:5000/api/projects', {
+        response = await fetch('https://projectportfolio-production-a923.up.railway.app/api/projects', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(projectData)
@@ -109,7 +112,8 @@ const Admin = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/projects/${id}`, {
+      // await fetch(`http://localhost:5000/api/projects/${id}`, {
+      await fetch(`https://projectportfolio-production-a923.up.railway.app/api/projects/${id}`, {
         method: 'DELETE'
       });
       setProjects(projects.filter(p => p._id !== id));

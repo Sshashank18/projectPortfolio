@@ -20,7 +20,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/login', form);
+      // await axios.post('http://localhost:5000/login', form);
+      await axios.post('https://projectportfolio-production-a923.up.railway.app/login', form);
 
       window.dispatchEvent(new Event('userUpdated'));
 
