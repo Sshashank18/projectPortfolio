@@ -15,7 +15,8 @@ const Navbar = () => {
 
   // Fetch user status
   const fetchUser = () => {
-    axios.get('http://localhost:5000/me')
+    axios.get('https://projectportfolio-production-a923.up.railway.app/me')
+    // axios.get('http://localhost:5000/me')
       .then(res => setUser(res.data.user))
       .catch(() => setUser(null));
   };
@@ -46,7 +47,8 @@ const Navbar = () => {
   };
 
   const handleLogout = async () => {
-    await axios.get('http://localhost:5000/logout');
+    // await axios.get('http://localhost:5000/logout');
+    await axios.get('https://projectportfolio-production-a923.up.railway.app/logout');
     setUser(null);
     navigate('/', { replace: true });
 
