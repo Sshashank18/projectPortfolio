@@ -55,15 +55,18 @@ const Project = mongoose.model('Project', projectSchema);
 
 
 app.use(session({
-  // secret: 'Portfolio',
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'Portfolio',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // true on Railway
-    // secure: false // for localhost
-    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
-  }
+    secure: process.env.NODE_ENV === 'production', // ONLY true in production
+    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax'
+  },
+    //For localhost
+//   cookie: {
+//   secure: false, // don't use true unless testing on HTTPS
+//   sameSite: 'Lax'
+// }
 }));
 
 app.use(passport.initialize());
@@ -89,6 +92,8 @@ app.post('/register', async (req, res) => {
 
 // Login
 app.post('/login', passport.authenticate('local'), (req, res) => {
+    console.log('Login session ID:', req.sessionID);
+  console.log('Logged in user:', req.user);
   res.json({ user: req.user });
 });
 
