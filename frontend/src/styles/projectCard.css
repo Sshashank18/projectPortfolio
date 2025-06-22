@@ -1,0 +1,53 @@
+.project-card-wrapper {
+  padding: 20px;
+  width: 280px;
+  perspective: 1000px;
+}
+
+.project-card {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-card:hover {
+  transform: scale(1.83);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  text-align: center;
+  transform-style: preserve-3d;
+  perspective: 800px; 
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  transform: translateZ(40px); /* Adds visible 3D depth */
+  transition: transform 0.2s ease;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Simulates depth and lighting */
+  will-change: transform;
+}
