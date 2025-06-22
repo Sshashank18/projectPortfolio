@@ -15,8 +15,8 @@ const Navbar = () => {
 
   // Fetch user status
   const fetchUser = () => {
-    axios.get('https://projectportfolio-production-a923.up.railway.app/me',{ withCredentials: true })
-    // axios.get('http://localhost:5000/me')
+    axios.get('https://projectportfolio-production-a923.up.railway.app/me', { withCredentials: true })
+      // axios.get('http://localhost:5000/me')
       .then(res => setUser(res.data.user))
       .catch(() => setUser(null));
   };
@@ -48,7 +48,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     // await axios.get('http://localhost:5000/logout');
-    await axios.get('https://projectportfolio-production-a923.up.railway.app/logout',{ withCredentials: true });
+    await axios.get('https://projectportfolio-production-a923.up.railway.app/logout', { withCredentials: true });
     setUser(null);
     navigate('/', { replace: true });
 
@@ -69,14 +69,12 @@ const Navbar = () => {
       }}
     >
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-
+        {/* About */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {/* About link */}
-          {user && !isHome ? (
+          {!isHome ? (
             <IconButton edge="start" color="inherit" onClick={goBack}>
               <ArrowBackIcon sx={{ color: 'white' }} />
             </IconButton>
-
           ) : (
             <Button
               color="inherit"
@@ -84,14 +82,15 @@ const Navbar = () => {
               sx={{
                 color: 'white',
                 mr: 1,
-                ml:20,
+                ml: 20,
                 fontWeight: 700,
                 fontSize: '1.1rem',
                 '&:hover': { cursor: 'pointer' },
               }}
             >
               About Me
-            </Button>)}
+            </Button>
+          )}
         </Box>
 
         <Box>
