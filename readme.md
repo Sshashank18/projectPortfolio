@@ -12,7 +12,7 @@ This platform highlights my personal software development projects, along with l
 - 🌐 **Portfolio Integration**: Link to detailed personal website via the **About Me** section.
 - ☁️ **Deployed on the cloud**:  
   - **Frontend**: [Firebase Hosting](https://firebase.google.com/)  
-  - **Backend/API**: [Railway](https://railway.app/)
+  - **Backend/API**: [Render](https://render.com/)
 
 ---
 
@@ -33,7 +33,7 @@ This platform highlights my personal software development projects, along with l
 
 ## Links
 
-https://projectportfolio-production-a923.up.railway.app/ (For Backend)
+https://projectportfolio-tj9c.onrender.com/ (For Backend)
 
 https://projectportfolio-c4a04.web.app/ (For Frontend)
 
