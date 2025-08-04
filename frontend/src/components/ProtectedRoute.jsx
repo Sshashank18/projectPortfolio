@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     // axios.get('http://localhost:5000/me', { withCredentials: true })
-    axios.get('https://projectportfolio-production-a923.up.railway.app/me', { withCredentials: true })
+    axios.get('https://projectportfolio-tj9c.onrender.com/me', { withCredentials: true })
       .then(res => setAuth(res.data.user))
       .catch(() => setAuth(false));
   }, []);

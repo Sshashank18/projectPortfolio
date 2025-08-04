@@ -14,7 +14,7 @@ const Home = () => {
     const fetchProjects = async () => {
       try {
         // const response = await fetch('http://localhost:5000/api/projects');
-        const response = await fetch('https://projectportfolio-production-a923.up.railway.app/api/projects',{ withCredentials: true });
+        const response = await fetch('https://projectportfolio-tj9c.onrender.com/api/projects',{ withCredentials: true });
         const data = await response.json();
         setProjects(data);
         setFilteredProjects(data);
