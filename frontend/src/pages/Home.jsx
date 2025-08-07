@@ -9,10 +9,12 @@ const Home = () => {
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [categories, setCategories] = useState(['ALL']);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
+        setIsLoading(true); // Set loading to true when fetch starts
         // const response = await fetch('http://localhost:5000/api/projects');
         const response = await fetch('https://projectportfolio-tj9c.onrender.com/api/projects',{ withCredentials: true });
         const data = await response.json();
@@ -28,6 +30,8 @@ const Home = () => {
         setCategories(uniqueCategories);
       } catch (error) {
         console.error('Error fetching projects:', error);
+      } finally {
+        setIsLoading(false); // Set loading to false when fetch completes (success or error)
       }
     };
 
@@ -36,22 +40,34 @@ const Home = () => {
 
   useEffect(() => {
     if (activeCategory === 'ALL') {
-    setFilteredProjects(projects);
-  } else {
-    setFilteredProjects(
-      projects.filter(p =>
-        p.category
-          .split(',')
-          .map(cat => cat.trim().toUpperCase())
-          .includes(activeCategory)
-      )
-    );
-  }
+      setFilteredProjects(projects);
+    } else {
+      setFilteredProjects(
+        projects.filter(p =>
+          p.category
+            .split(',')
+            .map(cat => cat.trim().toUpperCase())
+            .includes(activeCategory)
+        )
+      );
+    }
   }, [activeCategory, projects]);
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
   };
+
+  // Loading component
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p className="loading-text">Loading projects...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="home-container">
